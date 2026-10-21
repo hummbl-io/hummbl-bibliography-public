@@ -46,10 +46,16 @@ Check publisher provenance before running downloaded code. They also do not
 prove scientific truth, source applicability or reader learning.
 
 The preview browser walkthrough used synthetic notes over a localhost server.
-Direct `file://` execution was blocked by the review browser policy and remains
-unverified. No-JavaScript behavior has source review only. If local opening
-fails in your browser, use the plain guide or serve this directory on localhost.
-No public web hosting has been deployed for this preview.
+To use an extracted release, run this from its directory:
+
+```text
+python -m http.server 8765 --bind 127.0.0.1
+```
+
+Open `http://127.0.0.1:8765/` and stop the server with Ctrl+C. This localhost
+route was exercised for the preview. Direct `file://` opening is optional and
+unverified. No-JavaScript
+behavior has source review only. Use the local server only while working with the kit.
 
 ## Contents and reuse
 
