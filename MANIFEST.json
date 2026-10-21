@@ -1,5 +1,5 @@
 {
-  "edition": "0.1.0-preview",
+  "edition": "0.1.1-search-preview",
   "as_of": "2026-10-21",
   "records": 134795,
   "bibtex_files": 115,
@@ -754,8 +754,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2320,
-      "sha256": "d4b84d89c472970aa57605ba2f98579864abe431453fec3cc2ebee0457a3f5ee"
+      "bytes": 5267,
+      "sha256": "7b2eddef48b60008f2791e3925577fa12229a2e36cae441c03181d8bc0922701"
     },
     {
       "path": "SECURITY.md",
@@ -763,9 +763,19 @@
       "sha256": "afebd723aa2e8a86968e6237da614d04bb83e84f6a58580c485817bfc925986d"
     },
     {
+      "path": "search.py",
+      "bytes": 11981,
+      "sha256": "a65dca68f1ea932bf10298839a95ef5c2d3b4b06c58872be211bd45d1bed4dcd"
+    },
+    {
+      "path": "test_search.py",
+      "bytes": 11422,
+      "sha256": "683d33b70930ef023ad60cc8c00e4201c7f75c885816fe68a9c7647f31786441"
+    },
+    {
       "path": "verify.py",
-      "bytes": 3637,
-      "sha256": "30f440b5fd1f730764454d26cdfd6161ac8f9064a22c4b7b6b66c1278aceb253"
+      "bytes": 3668,
+      "sha256": "badfabf4357e99eea25122c816a6c5ed99072d860b20cad5d56ecf7af0a65520"
     }
   ],
   "key_policy": "Unique under Unicode casefold; later sorted-shard collisions gain _pub plus first eight SHA256 hex digits of the original UTF-8 key.",

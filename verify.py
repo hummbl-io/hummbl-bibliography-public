@@ -57,7 +57,7 @@ def verify(root):
         raw = path.read_bytes()
         if len(raw) != row["bytes"] or hashlib.sha256(raw).hexdigest() != row["sha256"]:
             raise ValueError("Root-document integrity mismatch: " + row["path"])
-    if root_names != {".gitattributes", "README.md", "DATA_POLICY.md", "SECURITY.md", "LICENSE", "LICENSE-MIT", "LICENSE-APACHE", "verify.py"}:
+    if root_names != {".gitattributes", "README.md", "DATA_POLICY.md", "SECURITY.md", "LICENSE", "LICENSE-MIT", "LICENSE-APACHE", "verify.py", "search.py", "test_search.py"}:
         raise ValueError("Root-document inventory does not match this edition")
     return {"edition": manifest["edition"], "records": total, "shards": len(expected), "integrity": "pass"}
 

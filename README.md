@@ -2,9 +2,68 @@
 
 A sharded BibTeX research bibliography spanning multiple fields, with an initial emphasis on cognitive frameworks, agent systems and AI governance.
 
-Version **0.1.0-preview** contains **134,795 citation records across 115 BibTeX files**, as of 2026-10-21. It makes no claim to be the largest bibliography.
+Version **0.1.1-search-preview** contains **134,795 citation records across 115 BibTeX files**, as of 2026-10-21. It adds an offline search tool to the unchanged citation snapshot from `v0.1.0-preview`. It makes no claim to be the largest bibliography.
 
 Use the files in bibliography/ with your citation manager or BibTeX tooling. MANIFEST.json records each shard count and SHA-256 hash.
+
+## Find references offline
+
+Download this edition, extract it, then use Python 3.11 or newer:
+
+```text
+python -B search.py "feedback loops" --field title --limit 10
+python -B search.py "learning" --field title --year 2024 --limit 10
+```
+
+Each query checks edition integrity first and scans the manifest-listed shards.
+The default JSON output includes total matches, returned count, parsing warnings
+and each result's shard, original citation key, source line and literal metadata.
+Results follow shard/entry order. There is no relevance ranking. A match is a
+candidate reference to inspect, not a recommendation or verified source claim.
+
+To select a result for export, copy its exact citation key into `--key`:
+
+```text
+python -B search.py "COPIED_KEY" --field key --key "COPIED_KEY" --format bibtex --output ../selected-references.bib
+```
+
+BibTeX output preserves the selected original entry bytes; blank lines separate
+entries. `--key` is an exact, case-sensitive citation-key filter. `--output`
+creates a new file outside the edition, refuses existing files and prints a
+save receipt; its parent directory must exist. Without `--output`, BibTeX goes
+to standard output. Default JSON search creates no files or persistent index.
+JSON is the safer format for examining untrusted metadata; raw BibTeX remains
+untrusted input. Check the selected work before citing it.
+
+Queries use case-insensitive literal matching with Unicode case folding, not
+regular expressions or semantic search. `--field` accepts `all`, `title`,
+`author`, `year`, `doi` or `key`; `all` searches raw entry text. `--year` accepts
+one four-digit literal year; `--limit` ranges from 1 to 1000. Matching records
+with the same DOI or title remain separate. URLs are displayed as data and are
+never opened or resolved.
+
+The parser supports braced and quoted literal fields, decimal values and
+parenthesized entries. It does not expand macros, concatenate expressions,
+follow cross-references, interpret TeX or normalize TeX accents/braces for
+matching. Unsupported fields are reported and excluded from field matching;
+raw `all` searches still see their text. Malformed entries are counted and
+reported with shard/line; recovery uses the next column-zero `@` entry boundary.
+That recovery rule can reject valid unusual multiline literal text containing
+such a boundary. Inspect warnings and original files rather than treating a
+zero-result search as proof a work is absent.
+
+These limits deliberately cover less than the full format documented in
+[Patashnik's BIBTEXing, section 2.1](https://texdoc.org/serve/BibTeX/0).
+Search and integrity checks do not validate DOI resolution, scholarly quality
+or whether a finding applies to your work.
+
+Run the small synthetic regression suite with:
+
+```text
+python -B -m unittest discover -s . -p test_search.py -v
+```
+
+## Check the edition
 
 Run `python verify.py` with Python 3.11 or newer to verify the downloaded shards and root documents against the manifest, including its citation-field allowlist. No dependencies or network access are required. This checks distribution integrity and record counts; it does not validate scholarly claims or authenticate a manifest obtained from an untrusted source. Obtain the edition from this repository and compare the published revision or release digest when authenticity matters.
 
