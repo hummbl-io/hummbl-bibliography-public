@@ -4,7 +4,9 @@ from dataclasses import dataclass
 import bisect
 import hashlib
 import json
+import os
 from pathlib import Path, PurePosixPath
+from pathlib import PureWindowsPath
 import re
 import sys
 
@@ -15,6 +17,11 @@ FIELDS = ("title", "author", "year", "doi", "key")
 ENTRY_START = re.compile(r"(?m)^@([A-Za-z]+)\s*([({])")
 FIELD_NAME = re.compile(r"^[A-Za-z][A-Za-z0-9_-]*$")
 YEAR = re.compile(r"^[0-9]{4}$")
+MAX_DIAGNOSTICS = 1000
+DEVICE_NAMES = {"con", "prn", "aux", "nul", *(f"com{i}" for i in range(1, 10)),
+                *(f"lpt{i}" for i in range(1, 10)),
+                *(f"com{i}" for i in ("¹", "²", "³")),
+                *(f"lpt{i}" for i in ("¹", "²", "³"))}
 
 
 @dataclass
@@ -217,7 +224,7 @@ def search(directory, query, field="all", year=None, limit=20, *, key=None):
         raise ValueError("manifest changed during search")
     manifest = json.loads(manifest_after.decode("utf-8"))
     query_folded = query.casefold()
-    diagnostics, scanned, unsupported, total_matches = [], 0, 0, 0
+    diagnostics, scanned, unsupported, malformed, diagnostics_omitted, total_matches = [], 0, 0, 0, 0, 0
     selected = []
     for row in manifest["files"]:
         shard = row["path"]
@@ -227,10 +234,12 @@ def search(directory, query, field="all", year=None, limit=20, *, key=None):
             raise ValueError("shard changed during search: " + shard)
         entries, notes, candidates = _scan_shard(raw_shard, shard)
         scanned += candidates
-        diagnostics.extend(notes)
+        malformed += sum(note["kind"] == "malformed" for note in notes)
+        unsupported += sum(note["kind"] == "unsupported" for note in notes)
+        available = max(0, MAX_DIAGNOSTICS - len(diagnostics))
+        diagnostics.extend(notes[:available])
+        diagnostics_omitted += max(0, len(notes) - available)
         for entry in entries:
-            if entry.unsupported:
-                unsupported += 1
             selected_year = entry.values.get("year", "").strip()
             if year is not None and selected_year != year:
                 continue
@@ -252,13 +261,14 @@ def search(directory, query, field="all", year=None, limit=20, *, key=None):
     return {"edition": verified["edition"], "scanned_records": scanned,
             "total_matches": total_matches, "returned": len(selected),
             "truncated": total_matches > len(selected), "unsupported_records": unsupported,
-            "malformed_records": sum(note["kind"] == "malformed" for note in diagnostics),
+            "malformed_records": malformed, "diagnostics_omitted": diagnostics_omitted,
             "diagnostics": diagnostics,
             "hits": [hit for hit, _ in selected],
             "bibtex": b"\n\n".join(raw for _, raw in selected)}
 
 
 def _write_export(root, output, content):
+    _validate_output_name(output)
     target = Path(output)
     parent = target.parent.resolve(strict=True)
     if not parent.is_dir():
@@ -272,6 +282,22 @@ def _write_export(root, output, content):
     with target.open("xb") as stream:
         stream.write(content)
     return target
+
+
+def _validate_output_name(output):
+    raw = os.fspath(output)
+    if not isinstance(raw, str):
+        raise ValueError("output path must be text")
+    if raw.startswith(("\\\\.\\", "//./", "\\\\?\\", "//?/")):
+        raise ValueError("device namespace output paths are not allowed")
+    name = PureWindowsPath(raw).name
+    if not name or ":" in name:
+        raise ValueError("invalid output basename")
+    if name.endswith((" ", ".")):
+        raise ValueError("output basename cannot end in a space or dot")
+    device_base = name.split(".", 1)[0].rstrip(" .").casefold()
+    if device_base in DEVICE_NAMES:
+        raise ValueError("Windows reserved device names cannot be used for output")
 
 
 def main(argv=None):
@@ -295,6 +321,8 @@ def main(argv=None):
     if args.format == "bibtex":
         for note in result["diagnostics"]:
             print(json.dumps(note, ensure_ascii=True), file=sys.stderr)
+        if result["diagnostics_omitted"]:
+            print(f"{result['diagnostics_omitted']} additional diagnostics omitted.", file=sys.stderr)
         if args.output is not None:
             try:
                 target = _write_export(args.directory, args.output, result["bibtex"])

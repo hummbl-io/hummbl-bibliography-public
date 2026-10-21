@@ -18,6 +18,8 @@ python -B search.py "learning" --field title --year 2024 --limit 10
 Each query checks edition integrity first and scans the manifest-listed shards.
 The default JSON output includes total matches, returned count, parsing warnings
 and each result's shard, original citation key, source line and literal metadata.
+Warnings are capped at 1000 entries; `diagnostics_omitted` reports the remainder,
+while malformed/unsupported totals still count all scanned entries.
 Results follow shard/entry order. There is no relevance ranking. A match is a
 candidate reference to inspect, not a recommendation or verified source claim.
 
@@ -30,7 +32,8 @@ python -B search.py "COPIED_KEY" --field key --key "COPIED_KEY" --format bibtex 
 BibTeX output preserves the selected original entry bytes; blank lines separate
 entries. `--key` is an exact, case-sensitive citation-key filter. `--output`
 creates a new file outside the edition, refuses existing files and prints a
-save receipt; its parent directory must exist. Without `--output`, BibTeX goes
+save receipt; its parent directory must exist. Windows reserved device names
+and nonportable device/stream targets are refused. Without `--output`, BibTeX goes
 to standard output. Default JSON search creates no files or persistent index.
 JSON is the safer format for examining untrusted metadata; raw BibTeX remains
 untrusted input. Check the selected work before citing it.
@@ -51,6 +54,10 @@ reported with shard/line; recovery uses the next column-zero `@` entry boundary.
 That recovery rule can reject valid unusual multiline literal text containing
 such a boundary. Inspect warnings and original files rather than treating a
 zero-result search as proof a work is absent.
+Unescaped quotation marks within a quoted value's brace groups are also outside
+this restricted parser and may be reported as unsupported. Successful searches,
+including zero matches, exit 0; data/export errors exit 1, and invalid CLI
+arguments exit 2. Exports do not collect macro definitions or referenced entries.
 
 These limits deliberately cover less than the full format documented in
 [Patashnik's BIBTEXing, section 2.1](https://texdoc.org/serve/BibTeX/0).

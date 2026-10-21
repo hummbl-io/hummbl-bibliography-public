@@ -754,8 +754,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5267,
-      "sha256": "7b2eddef48b60008f2791e3925577fa12229a2e36cae441c03181d8bc0922701"
+      "bytes": 5815,
+      "sha256": "6b518ffc0acf09d3a255b28eab41cab94743e1353df8bde195ec273a5a80a90a"
     },
     {
       "path": "SECURITY.md",
@@ -764,13 +764,13 @@
     },
     {
       "path": "search.py",
-      "bytes": 11981,
-      "sha256": "a65dca68f1ea932bf10298839a95ef5c2d3b4b06c58872be211bd45d1bed4dcd"
+      "bytes": 13430,
+      "sha256": "a3ebd6677f31dfc065cd3ec207e8a072cab8f489eec89855a6011b568d9c9dc0"
     },
     {
       "path": "test_search.py",
-      "bytes": 11422,
-      "sha256": "683d33b70930ef023ad60cc8c00e4201c7f75c885816fe68a9c7647f31786441"
+      "bytes": 13613,
+      "sha256": "4ae1eb0734814cc2a92b9c7e6bde6cb78debe90f1badfd1c01d875696ff0b085"
     },
     {
       "path": "verify.py",

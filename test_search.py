@@ -142,6 +142,32 @@ class SearchTests(unittest.TestCase):
         self.assertEqual(result["total_matches"], 1)
         self.assertEqual(before, after)
 
+    def test_diagnostic_serialization_is_capped_with_exact_total_counts(self):
+        data = (b"@article{bad1, title={open\n@article{bad2, title={open\n"
+                b"@article{u1, title=macroOne}\n@article{u2, title=macroTwo}\n")
+        self.write_corpus({"one.bib": data})
+        with patch.object(search, "MAX_DIAGNOSTICS", 1):
+            result = self.query("no-match", field="title")
+        self.assertEqual(result["scanned_records"], 4)
+        self.assertEqual(result["malformed_records"], 2)
+        self.assertEqual(result["unsupported_records"], 2)
+        self.assertEqual(len(result["diagnostics"]), 1)
+        self.assertEqual(result["diagnostics_omitted"], 3)
+
+    def test_reserved_and_device_output_names_rejected_before_filesystem_calls(self):
+        names = ("CON.txt", "aux", "COM1.bib", "LPT³.out", "file:stream.bib",
+                 "bad.", "bad ", r"\\.\NUL", r"\\?\GLOBALROOT")
+        for name in names:
+            with self.subTest(name=name), \
+                    patch.object(Path, "resolve", side_effect=AssertionError("filesystem access")) as resolve, \
+                    patch.object(Path, "exists", side_effect=AssertionError("filesystem access")) as exists, \
+                    patch.object(Path, "open", side_effect=AssertionError("filesystem access")) as open_file:
+                with self.assertRaises(ValueError):
+                    search._write_export(self.root, name, b"entry")
+                resolve.assert_not_called()
+                exists.assert_not_called()
+                open_file.assert_not_called()
+
     def test_cli_json_and_bibtex_formats(self):
         raw = b"@article{cli, title={Control\ncharacter}, year=2024}\n"
         self.write_corpus({"one.bib": raw})
@@ -164,6 +190,16 @@ class SearchTests(unittest.TestCase):
             code = search.main(["control", "--field", "title", "--format", "bibtex", "--directory", str(self.root)])
         self.assertEqual(code, 0, errors.getvalue())
         self.assertEqual(capture.buffer.getvalue(), raw.rstrip(b"\r\n") + b"\n")
+
+        unsupported = b"@article{unsupported, title=macroWord}\n"
+        self.write_corpus({"one.bib": unsupported})
+        capture, errors = BinaryCapture(), io.StringIO()
+        with patch.object(search, "verify", return_value={"edition": "test"}), \
+                patch.object(search, "MAX_DIAGNOSTICS", 0), \
+                patch("sys.stdout", capture), redirect_stderr(errors):
+            code = search.main(["macroWord", "--format", "bibtex", "--directory", str(self.root)])
+        self.assertEqual(code, 0, errors.getvalue())
+        self.assertIn("1 additional diagnostics omitted", errors.getvalue())
 
     def test_explicit_bibtex_output_is_new_external_file_only(self):
         raw = b"@article{export, title={Outside}, year=2024}\n"
