@@ -1,0 +1,789 @@
+{
+  "edition": "0.1.0-preview",
+  "as_of": "2026-10-21",
+  "records": 134795,
+  "bibtex_files": 115,
+  "allowed_fields": [
+    "title",
+    "author",
+    "editor",
+    "year",
+    "month",
+    "journal",
+    "booktitle",
+    "publisher",
+    "volume",
+    "number",
+    "pages",
+    "edition",
+    "isbn",
+    "issn",
+    "doi",
+    "url",
+    "eprint",
+    "archiveprefix",
+    "primaryclass"
+  ],
+  "excluded_content": [
+    "abstracts",
+    "free-form notes",
+    "keywords and generated tags",
+    "operational documents",
+    "upstream history",
+    "issue and PR content",
+    "Actions history"
+  ],
+  "third_party_work_license": "unchanged; no blanket relicensing",
+  "files": [
+    {
+      "path": "bibliography/T10_collaboration.bib",
+      "records": 329,
+      "bytes": 124042,
+      "sha256": "292c3f1f3d2c2fad697caae4d95c0fde54589f4e1e4548495b23de3df3660c80"
+    },
+    {
+      "path": "bibliography/T10_collaboration_p001.bib",
+      "records": 348,
+      "bytes": 131095,
+      "sha256": "4c52ae3a25041c8f62e70661db6a4edd7ffb1ff6a2f7460eb4a1a4838fd0c83e"
+    },
+    {
+      "path": "bibliography/T10_collaboration_p002.bib",
+      "records": 802,
+      "bytes": 297939,
+      "sha256": "86ab40606e15aa955b490e93b7e932e13babcef45e368a61c703c7aa8e3e9cae"
+    },
+    {
+      "path": "bibliography/T10_collaboration_p003.bib",
+      "records": 470,
+      "bytes": 165149,
+      "sha256": "b867867814e856d37ace9bf4bb68ac825d017931d0701c616e1eb2a82b132cff"
+    },
+    {
+      "path": "bibliography/T10_collaboration_p004.bib",
+      "records": 801,
+      "bytes": 275055,
+      "sha256": "16a895a229dc210354bf800e4826ad1bff26d3e58c757c9321f9f3094f2ab060"
+    },
+    {
+      "path": "bibliography/T11_security.bib",
+      "records": 328,
+      "bytes": 115637,
+      "sha256": "20a3e914990ab38733a53afc3e5a7a085bec705642d2d432382ca229ceaa1990"
+    },
+    {
+      "path": "bibliography/T11_security_p001.bib",
+      "records": 999,
+      "bytes": 365033,
+      "sha256": "6e5a2266bb4de7ac89a9c409272af37d59de6bfb0038910fb844265ec44ca861"
+    },
+    {
+      "path": "bibliography/T11_security_p002.bib",
+      "records": 615,
+      "bytes": 211991,
+      "sha256": "cc6a638fb6de0f5486fda8d9d9bdad8958ec6ed4fa67a431159561cfd0bc54bf"
+    },
+    {
+      "path": "bibliography/T11_security_p003.bib",
+      "records": 1234,
+      "bytes": 438987,
+      "sha256": "ccb65c9a56d9440c3d5d4911478e98ebbd93955a1f3551997e954fa241a15392"
+    },
+    {
+      "path": "bibliography/T12_complexity.bib",
+      "records": 331,
+      "bytes": 103081,
+      "sha256": "5426c34bce76f13554bb71148516c773b58fe59c424d6af89d5b931d7d6789e7"
+    },
+    {
+      "path": "bibliography/T12_complexity_p001.bib",
+      "records": 177,
+      "bytes": 58620,
+      "sha256": "1182bd8aa6a5e5e1e420fee792d8ab30f01939607c8974896c93778523b6cfed"
+    },
+    {
+      "path": "bibliography/T12_complexity_p002.bib",
+      "records": 682,
+      "bytes": 232337,
+      "sha256": "01a24ed644f3dee475fe52e53fb98f8ab7307964b5594095d262e89975cf22f2"
+    },
+    {
+      "path": "bibliography/T12_complexity_p003.bib",
+      "records": 2742,
+      "bytes": 920701,
+      "sha256": "8bcb5d520a6bd12abf359d527c58153726b47d5b0b7439d8d5b1d53cdf6dabe7"
+    },
+    {
+      "path": "bibliography/T12_complexity_p004.bib",
+      "records": 1851,
+      "bytes": 625772,
+      "sha256": "41331039dce096e434a43142d5e02992934cb0218bab14cb5ffcb08f8982fc16"
+    },
+    {
+      "path": "bibliography/T12_complexity_p005.bib",
+      "records": 1249,
+      "bytes": 418736,
+      "sha256": "8a200b2acdefaade4c2fd50e8b775e82e8baf3c158c6892900b6f12d56f42875"
+    },
+    {
+      "path": "bibliography/T13_reasoning.bib",
+      "records": 332,
+      "bytes": 105174,
+      "sha256": "f5ca0be635eed0fdb8d901a1025e80c12ffb873dedbf15c9d2c50d1c75777c1a"
+    },
+    {
+      "path": "bibliography/T13_reasoning_p001.bib",
+      "records": 2454,
+      "bytes": 837315,
+      "sha256": "a1be831e813eec6da3435dae2be9217753d94c62dfe9e07d0376a8b2d697f93c"
+    },
+    {
+      "path": "bibliography/T13_reasoning_p002.bib",
+      "records": 2496,
+      "bytes": 743395,
+      "sha256": "94ac7703986aef17cce918ac6d72de849a1a2b3197c6f94abe97ede9949b10fe"
+    },
+    {
+      "path": "bibliography/T13_reasoning_p003.bib",
+      "records": 1311,
+      "bytes": 403642,
+      "sha256": "f806016605e9e4686bee9f57e026fe5de65274f8d79f794ae7a95793823d36e1"
+    },
+    {
+      "path": "bibliography/T14_provenance.bib",
+      "records": 328,
+      "bytes": 120508,
+      "sha256": "099b07489fbaa35b04216404226a87d9443537de9e29a1a291dc1c4071a0643b"
+    },
+    {
+      "path": "bibliography/T14_provenance_p001.bib",
+      "records": 1860,
+      "bytes": 669305,
+      "sha256": "172268f7dcd01fe83c40ea2beb316664472c3e49d71ed9e49186b0b2961731f7"
+    },
+    {
+      "path": "bibliography/T15_maturity.bib",
+      "records": 325,
+      "bytes": 124784,
+      "sha256": "79eceb56eac2ba7074675be78f98af001e8c35b5c4c958bf4976ff5e4bd5c4ad"
+    },
+    {
+      "path": "bibliography/T16_data_governance.bib",
+      "records": 327,
+      "bytes": 126445,
+      "sha256": "3fdb2f37220bd1b5eba90fd149f64e158910be9c7996f285cc5e8b56e433cfdc"
+    },
+    {
+      "path": "bibliography/T16_data_governance_p001.bib",
+      "records": 839,
+      "bytes": 300414,
+      "sha256": "a0c00e2bd4fdd48cad8221c3712da4ceaefebefa35ece55a3c19d1290213d9ae"
+    },
+    {
+      "path": "bibliography/T16_data_governance_p002.bib",
+      "records": 1350,
+      "bytes": 458601,
+      "sha256": "d23344c6ea4bdf5b24f0a11c255214bebbeec3e354f267413a7804fda963eba9"
+    },
+    {
+      "path": "bibliography/T16_data_governance_p003.bib",
+      "records": 1032,
+      "bytes": 369265,
+      "sha256": "21ee2c1c96a01c8948afb69a860e444339770b8ff8d1b7227eec860b1653a5de"
+    },
+    {
+      "path": "bibliography/T17_privacy.bib",
+      "records": 329,
+      "bytes": 118703,
+      "sha256": "1a78eda636c9edc6cb363af2a15bf9e873dafcb95662c5181b4138547c87b1a7"
+    },
+    {
+      "path": "bibliography/T18_human_oversight.bib",
+      "records": 325,
+      "bytes": 119588,
+      "sha256": "f45e5f05b607279f0bd2468d5f84a4ae4a7697d1ee6d69a5efce982a4b18ae74"
+    },
+    {
+      "path": "bibliography/T19_incident_response.bib",
+      "records": 331,
+      "bytes": 117313,
+      "sha256": "25719d74c9393cfc2838a9bb769aeab4430f82136da151423a44b6c860fc12c9"
+    },
+    {
+      "path": "bibliography/T1_canonical.bib",
+      "records": 398,
+      "bytes": 108253,
+      "sha256": "e61cf8e2d8538bf86f55e8ba50bbbb186aa36f52b794f4f0093db0c9496dfdb8"
+    },
+    {
+      "path": "bibliography/T20_normative.bib",
+      "records": 332,
+      "bytes": 105232,
+      "sha256": "64e42d110ddb4e0bd367861f31bb78b474e578b5b9587edd830ee67280251085"
+    },
+    {
+      "path": "bibliography/T21_physical_agents.bib",
+      "records": 330,
+      "bytes": 132665,
+      "sha256": "e2d0f3721d5bbddb2d0cd664da21ffecd70e938c2ab5393a908909d25287b847"
+    },
+    {
+      "path": "bibliography/T21_physical_agents_p001.bib",
+      "records": 949,
+      "bytes": 360081,
+      "sha256": "ee92d282e3d182d88c60905cb9faa058cb7b165b3ea1206807c79f67f89402b7"
+    },
+    {
+      "path": "bibliography/T21_physical_agents_p002.bib",
+      "records": 912,
+      "bytes": 329835,
+      "sha256": "9d28f0cab97130cb67328c56a40ce92dc12b73698b816f5354b16a18add71654"
+    },
+    {
+      "path": "bibliography/T21_physical_agents_p003.bib",
+      "records": 1270,
+      "bytes": 476364,
+      "sha256": "9b658ed0b851d864ea0ca85e7ce3af07ba76c1be8afad685c48f2d3ab05ad2a3"
+    },
+    {
+      "path": "bibliography/T22_llm_wiki.bib",
+      "records": 328,
+      "bytes": 122065,
+      "sha256": "5e1ed18ffe966204b2272d933e774d30bb0811fdc7ffb0b18f2972987f8df2e2"
+    },
+    {
+      "path": "bibliography/T23_rsi_forecasting.bib",
+      "records": 327,
+      "bytes": 121700,
+      "sha256": "8e2f2a7b0828333ccc1662d4f4c55653f2795c22503b776e17f54afd328888fb"
+    },
+    {
+      "path": "bibliography/T24_ai_safety_alignment.bib",
+      "records": 325,
+      "bytes": 131409,
+      "sha256": "2c8f920a29d5e915a3c9c90789721a9a39e107ad70afc04c3347e1f41c765490"
+    },
+    {
+      "path": "bibliography/T2_empirical.bib",
+      "records": 386,
+      "bytes": 123164,
+      "sha256": "51f0ef507a87fd527e44a51db0fe45f4d8562dec00ec3432e9fb2a357747f0eb"
+    },
+    {
+      "path": "bibliography/T2_empirical_p001.bib",
+      "records": 463,
+      "bytes": 159042,
+      "sha256": "452fcc81d5262f9687bc33b64249c12af150897bc277b2ded89f8023b46506ca"
+    },
+    {
+      "path": "bibliography/T2_empirical_p002.bib",
+      "records": 2234,
+      "bytes": 734499,
+      "sha256": "6dc5c1b411a080d506ba4f40e0333edd4caa26bf3da7b8a955cf050b6533521f"
+    },
+    {
+      "path": "bibliography/T3_applied.bib",
+      "records": 362,
+      "bytes": 154636,
+      "sha256": "cbfca0dd1661ce778915bde7ef75214949135e528906e64796ea98057a40758f"
+    },
+    {
+      "path": "bibliography/T3_applied_p001.bib",
+      "records": 1268,
+      "bytes": 459031,
+      "sha256": "6f41947950a7abdca659747d11562c3679c1fb70bd93812661e0167c1cc81234"
+    },
+    {
+      "path": "bibliography/T4_agentic.bib",
+      "records": 337,
+      "bytes": 117806,
+      "sha256": "82fba56257be86324790411591eee51cf7cc90b89dcce3af60c88fe13a06ea52"
+    },
+    {
+      "path": "bibliography/T4_agentic_p001.bib",
+      "records": 30,
+      "bytes": 10999,
+      "sha256": "ec23441fdd474b82d0e422a10b138ee726236a53dcee136f6e6fa59e5823a34d"
+    },
+    {
+      "path": "bibliography/T4_agentic_p002.bib",
+      "records": 962,
+      "bytes": 347180,
+      "sha256": "7f284c3ae4619181e2c102f90d635de62fff6af1d1366beb5b490e5e217470b4"
+    },
+    {
+      "path": "bibliography/T4_agentic_p003.bib",
+      "records": 1396,
+      "bytes": 449208,
+      "sha256": "f0c208552de64ebdd61a7d6f4b8bd59eda0c28597695a9da0cac58b1180f7051"
+    },
+    {
+      "path": "bibliography/T5_engineering.bib",
+      "records": 338,
+      "bytes": 117912,
+      "sha256": "3bfefc34d908e228a35f752aa9e13ea652824caf0c9b3a2df69f6439c1246146"
+    },
+    {
+      "path": "bibliography/T5_engineering_p001.bib",
+      "records": 1000,
+      "bytes": 363811,
+      "sha256": "42e10f9ade7ee39fb0aa08feadb6ab2630a4c01afc6d346264f3ba69b88ec801"
+    },
+    {
+      "path": "bibliography/T5_engineering_p002.bib",
+      "records": 1167,
+      "bytes": 411718,
+      "sha256": "f8479c80802419305a4ffe947a1f27fe96dda96f6a6c9fa8feac4297310e1978"
+    },
+    {
+      "path": "bibliography/T5_engineering_p003.bib",
+      "records": 707,
+      "bytes": 244564,
+      "sha256": "344bf704c3567cd714577ee34f87425fd27b8e7088d0b0c7a526a01f25a6f4f2"
+    },
+    {
+      "path": "bibliography/T5_engineering_p004.bib",
+      "records": 627,
+      "bytes": 206052,
+      "sha256": "c693defff0cbfe966bb10a0fb5ad42b182963c39050b8efa8fd8a365b168f744"
+    },
+    {
+      "path": "bibliography/T5_engineering_p005.bib",
+      "records": 883,
+      "bytes": 338594,
+      "sha256": "87028fecdf82ff9f30b02851bead12a2594fbebe98659db6c15f6e62a73f909d"
+    },
+    {
+      "path": "bibliography/T5_engineering_p006.bib",
+      "records": 479,
+      "bytes": 176015,
+      "sha256": "1e0184f70219c0e976c94e518e8f7621841751b28742cd836474713a3502586e"
+    },
+    {
+      "path": "bibliography/T5_engineering_p007.bib",
+      "records": 789,
+      "bytes": 279645,
+      "sha256": "b6c76d3037aeb246380235fbc2c4ecc93fcf123b6ff79314df86d7c62c2c1082"
+    },
+    {
+      "path": "bibliography/T5_engineering_p008.bib",
+      "records": 1027,
+      "bytes": 362401,
+      "sha256": "cdb188cc33ab3bdb7663521b7e94d172c0143a7afc1685828cac5d2b3d3433df"
+    },
+    {
+      "path": "bibliography/T5_engineering_p009.bib",
+      "records": 269,
+      "bytes": 97772,
+      "sha256": "26b583bd31453e20b80b25619f5342fbec264c75445b60f548d15be4a6aaa9ab"
+    },
+    {
+      "path": "bibliography/T5_engineering_p010.bib",
+      "records": 1684,
+      "bytes": 581629,
+      "sha256": "375272f7afb34b4facb4032c141bb0fc5561377abf6ffcda5542350fdea4c304"
+    },
+    {
+      "path": "bibliography/T5_engineering_p011.bib",
+      "records": 724,
+      "bytes": 248692,
+      "sha256": "7410ae0821d999275b4fc4e82a02e34cb63f4a22c5da6f901f9c7fcaccc4230a"
+    },
+    {
+      "path": "bibliography/T5_engineering_p012.bib",
+      "records": 2188,
+      "bytes": 756522,
+      "sha256": "6da3928ef0e497aa5b6be76536dad34b9d65756165cd13764c1c08b97d60e096"
+    },
+    {
+      "path": "bibliography/T6_governance.bib",
+      "records": 333,
+      "bytes": 120118,
+      "sha256": "3f8e523bf47a7dc64a2b5efb76fbdde7f3e36632f6fd855b14ba1b8d865439d4"
+    },
+    {
+      "path": "bibliography/T6_governance_p001.bib",
+      "records": 30,
+      "bytes": 10537,
+      "sha256": "d78474ec8391a5a8de0f4e6d10e19606fd764a76662c9959befa7266b36218f7"
+    },
+    {
+      "path": "bibliography/T6_governance_p002.bib",
+      "records": 464,
+      "bytes": 167764,
+      "sha256": "7c062fcbeba4bf007650659f7b22d99799ba9919ea53698f59c2200bcc348d83"
+    },
+    {
+      "path": "bibliography/T6_governance_p003.bib",
+      "records": 313,
+      "bytes": 112509,
+      "sha256": "8fd63fc2dee1c97edb667c83a25ef806485acd93a3a7358c280bc6ee6483ecf9"
+    },
+    {
+      "path": "bibliography/T6_governance_p004.bib",
+      "records": 2108,
+      "bytes": 741960,
+      "sha256": "ca8839ab7421c0d9f87b4dae5c36d7490adeb81e0ef0c97dd4abfac3fc801e06"
+    },
+    {
+      "path": "bibliography/T7_emerging.bib",
+      "records": 325,
+      "bytes": 116271,
+      "sha256": "c2ddaa3843f8baa1051c2726f1267f3f61b2a1141f1a103a15cf34f5f62968e4"
+    },
+    {
+      "path": "bibliography/T7_emerging_p001.bib",
+      "records": 1691,
+      "bytes": 626920,
+      "sha256": "a5b9cecbedcfa6dae5722587b417eccdb7fdef783a0df880b1ffa92875e73cab"
+    },
+    {
+      "path": "bibliography/T7_emerging_p002.bib",
+      "records": 14,
+      "bytes": 5002,
+      "sha256": "1d2e906db39b67596512cd07de72f525f68d659307bba5382039c38457678d12"
+    },
+    {
+      "path": "bibliography/T7_emerging_p003.bib",
+      "records": 1885,
+      "bytes": 702038,
+      "sha256": "ecb830b1dfc49018b5478b752a131ab7e33883de3e7f0cf675a58ed9455e5a4a"
+    },
+    {
+      "path": "bibliography/T7_emerging_p004.bib",
+      "records": 528,
+      "bytes": 189252,
+      "sha256": "a50f3540112b1c5e5e2addf62d4210294be2b0f5c7e47344e20ab54a33a8e0cb"
+    },
+    {
+      "path": "bibliography/T7_emerging_p005.bib",
+      "records": 363,
+      "bytes": 128707,
+      "sha256": "180b973c0ea57a52dee7fcf81eb9cece255e0d5dbbfe47d4f1190ef95568c84b"
+    },
+    {
+      "path": "bibliography/T7_emerging_p006.bib",
+      "records": 1405,
+      "bytes": 522499,
+      "sha256": "6f38d1caee71a0c314236f078859c32861fc329478658e986d22f3b38c5daf4b"
+    },
+    {
+      "path": "bibliography/T7_emerging_p007.bib",
+      "records": 1128,
+      "bytes": 414034,
+      "sha256": "0f92e1484c184bd11c4176f0257e785c5f635c8c484b27e99131813c079d6017"
+    },
+    {
+      "path": "bibliography/T7_emerging_p008.bib",
+      "records": 1049,
+      "bytes": 368262,
+      "sha256": "b5842f158f40b5e8e7d1ab89daaa7c059362bda54bf5e32fd815cea4a76388d5"
+    },
+    {
+      "path": "bibliography/T7_emerging_p009.bib",
+      "records": 1500,
+      "bytes": 543094,
+      "sha256": "2886d09c63eb50a01598bc7964f5e8f6b7218a570248bc5e912f8b7d20e563ea"
+    },
+    {
+      "path": "bibliography/T7_emerging_p010.bib",
+      "records": 1568,
+      "bytes": 584586,
+      "sha256": "c5ef5028be4646e9e69ade11d18dc00fa0c756a3a23787dde8d69a2d9b4a7db0"
+    },
+    {
+      "path": "bibliography/T7_emerging_p011.bib",
+      "records": 182,
+      "bytes": 63694,
+      "sha256": "c3f80deec0bf867a310a063bca6f7696f3cb822b4f32fa85ae007be8045df93c"
+    },
+    {
+      "path": "bibliography/T7_emerging_p012.bib",
+      "records": 1024,
+      "bytes": 386112,
+      "sha256": "2a8b42e8a29c887bd0faa925d4e250960ce2fda91a46a130070d05e975ea63a3"
+    },
+    {
+      "path": "bibliography/T7_emerging_p013.bib",
+      "records": 2291,
+      "bytes": 821851,
+      "sha256": "d515e25409109125ab189a099196c298839a746dee433b922ed15767becee54c"
+    },
+    {
+      "path": "bibliography/T7_emerging_p014.bib",
+      "records": 2547,
+      "bytes": 878805,
+      "sha256": "a2f69b972085039d994bf5093d3e2bc491ddfab050c857f4f273e0f133445fe1"
+    },
+    {
+      "path": "bibliography/T7_emerging_p015.bib",
+      "records": 2876,
+      "bytes": 924192,
+      "sha256": "a88897b23167c5296cfb44c2466488addbf059da3b38901ef4711f494612356c"
+    },
+    {
+      "path": "bibliography/T7_emerging_p016.bib",
+      "records": 26,
+      "bytes": 8679,
+      "sha256": "d2d2973badd0f60238eb8531fbacf82f90ffc72549b555a6f143c304d9ad4cc0"
+    },
+    {
+      "path": "bibliography/T7_emerging_p017.bib",
+      "records": 2293,
+      "bytes": 835126,
+      "sha256": "869baaca376331fe75ccc02c232716f601c1db1e5ad7c9e61886b383c47a31a1"
+    },
+    {
+      "path": "bibliography/T7_emerging_p018.bib",
+      "records": 2263,
+      "bytes": 823441,
+      "sha256": "12dcb578579e827b12a2acbf22a63604044846c15241007a353432e304aa7645"
+    },
+    {
+      "path": "bibliography/T7_emerging_p019.bib",
+      "records": 2275,
+      "bytes": 820956,
+      "sha256": "d9aa90ff9a9e8f3857292cf2256ee6e18ecd9030254f2906979e84a7a883ff37"
+    },
+    {
+      "path": "bibliography/T7_emerging_p020.bib",
+      "records": 2312,
+      "bytes": 833424,
+      "sha256": "a6097321932f5c9c34bad1825527805614dd2010f556ec81f0e6132e5a40e9f2"
+    },
+    {
+      "path": "bibliography/T7_emerging_p021.bib",
+      "records": 2328,
+      "bytes": 840249,
+      "sha256": "dad6636a4f2aca3d93c59e4091c5e896a037bd4ded799611f9a445edbd8397f9"
+    },
+    {
+      "path": "bibliography/T7_emerging_p022.bib",
+      "records": 2336,
+      "bytes": 835207,
+      "sha256": "8f2025877a636cee687965c488fe5e88aeaffedfa2ade0447c74cc00682318a1"
+    },
+    {
+      "path": "bibliography/T7_emerging_p023.bib",
+      "records": 2333,
+      "bytes": 830963,
+      "sha256": "88f4d1b7208f4f32b7117c30618934fe12ba49c4665daf506247bf4d739981e8"
+    },
+    {
+      "path": "bibliography/T7_emerging_p024.bib",
+      "records": 2366,
+      "bytes": 843498,
+      "sha256": "332e94c9248a56ff4f94a3e381a10f183841b8c05493c27a170d8f9643b27d8f"
+    },
+    {
+      "path": "bibliography/T7_emerging_p025.bib",
+      "records": 2382,
+      "bytes": 843896,
+      "sha256": "e92fb983683f31785b5e217304fafc306ad6f208c50fa16f6c90b48ac2ad1c51"
+    },
+    {
+      "path": "bibliography/T7_emerging_p026.bib",
+      "records": 2399,
+      "bytes": 851221,
+      "sha256": "993ebd4146b0005f74f344e4b063cbaa8bec7888c9eeb3b990fc620c11eba672"
+    },
+    {
+      "path": "bibliography/T7_emerging_p027.bib",
+      "records": 1713,
+      "bytes": 603357,
+      "sha256": "496c668611a43dd1f0ff91513ca01342904b02c91d5d9d5e4b7b13bfa9535e0d"
+    },
+    {
+      "path": "bibliography/T7_emerging_p028.bib",
+      "records": 2181,
+      "bytes": 809583,
+      "sha256": "b327b287471a273e448adea771e6c37f905f64358fcf8d95b2dd7896bdba7779"
+    },
+    {
+      "path": "bibliography/T7_emerging_p029.bib",
+      "records": 2191,
+      "bytes": 811498,
+      "sha256": "fd69f1da79adc4ea82ce68dfc9c5dcd0900dafee4b2838d434821ea6f4373741"
+    },
+    {
+      "path": "bibliography/T7_emerging_p030.bib",
+      "records": 2188,
+      "bytes": 806211,
+      "sha256": "0fe8e7ebece5ab3b442141297d20b61cbdc8f1bbbb79e8a22a7def5ef9a0d5d9"
+    },
+    {
+      "path": "bibliography/T7_emerging_p031.bib",
+      "records": 2220,
+      "bytes": 814024,
+      "sha256": "e31ea356eb579c2cb43574629cf966fab977df6d6c8cce8d0df4ba135ab1db9d"
+    },
+    {
+      "path": "bibliography/T7_emerging_p032.bib",
+      "records": 2236,
+      "bytes": 813175,
+      "sha256": "2c766b1db633700f0589e4f5149bd4e563dd1f1dbff1902ad454844856e4414d"
+    },
+    {
+      "path": "bibliography/T7_emerging_p033.bib",
+      "records": 2250,
+      "bytes": 819027,
+      "sha256": "65c487821aaac490a7406fcd1c03b30ea50da8990b54214555c532749b148102"
+    },
+    {
+      "path": "bibliography/T7_emerging_p034.bib",
+      "records": 2260,
+      "bytes": 818887,
+      "sha256": "423ca4cadaf45a8cbfd4c7f54c4c668b057e3036ab98300e0c8f4000b63c83c9"
+    },
+    {
+      "path": "bibliography/T7_emerging_p035.bib",
+      "records": 2293,
+      "bytes": 824128,
+      "sha256": "07cccd58c2d3b82a9dc669838844b33af495223fe001895ffc94117dc829fa11"
+    },
+    {
+      "path": "bibliography/T7_emerging_p036.bib",
+      "records": 2312,
+      "bytes": 823900,
+      "sha256": "47588ef95039bc460e07dd49b6b9a2b50018807c05309805d966dfcf177f5283"
+    },
+    {
+      "path": "bibliography/T7_emerging_p037.bib",
+      "records": 2297,
+      "bytes": 824542,
+      "sha256": "024822c25967e39f7295369ee3e7d92666ceaeedf2e6ff042bad946b82190380"
+    },
+    {
+      "path": "bibliography/T7_emerging_p038.bib",
+      "records": 2339,
+      "bytes": 839612,
+      "sha256": "ef948b542f5e775fc0ff6a5136e0227c24fc7bfe2a87dadfe7847feacca3dc56"
+    },
+    {
+      "path": "bibliography/T7_emerging_p039.bib",
+      "records": 233,
+      "bytes": 83887,
+      "sha256": "61803f2d26c85f728089df2fb734508e8d2e45d788e5f19facb9fd0fb4b1bb78"
+    },
+    {
+      "path": "bibliography/T8_cognition.bib",
+      "records": 346,
+      "bytes": 116547,
+      "sha256": "9a008dfd54921f9b959c600b94976767b55f796f09ee612d14e75e7a36931b8d"
+    },
+    {
+      "path": "bibliography/T9_economics.bib",
+      "records": 327,
+      "bytes": 107379,
+      "sha256": "faa8cabcd02252a7e3068ffb7e5bfef8e58c275035cc82a83f277c7b876471ba"
+    },
+    {
+      "path": "bibliography/T9_economics_p001.bib",
+      "records": 1406,
+      "bytes": 469623,
+      "sha256": "9c471ef0cabc61d63914ff064ccc8ad54f274650facd0179821b2c32180a9c49"
+    },
+    {
+      "path": "bibliography/T9_economics_p002.bib",
+      "records": 1065,
+      "bytes": 341246,
+      "sha256": "6405a1ff32b78266ae10f11e7ccac30371107f4f58a3d48ebacb9d0447bac58e"
+    },
+    {
+      "path": "bibliography/T9_economics_p003.bib",
+      "records": 1202,
+      "bytes": 391563,
+      "sha256": "86dfd8bdf6c42488e8f3361eca0e8f74c6a338ed33b9680fb382621fdc51fc5a"
+    },
+    {
+      "path": "bibliography/T9_economics_p004.bib",
+      "records": 990,
+      "bytes": 328960,
+      "sha256": "7f9c7c78d442cf89e97b931aebfb596d3e09788de34c7539790746d8ad344e9a"
+    },
+    {
+      "path": "bibliography/T9_economics_p005.bib",
+      "records": 1316,
+      "bytes": 433988,
+      "sha256": "43674f41f334fe52815acc0ec00c11b1fbd291635d0fd0f2bdc630ff3e80fd1c"
+    },
+    {
+      "path": "bibliography/T9_economics_p006.bib",
+      "records": 1120,
+      "bytes": 362521,
+      "sha256": "bb0f8b5b73473647016e1ad825c0504f520ac717d0c2f9bda84834590e914c88"
+    },
+    {
+      "path": "bibliography/T9_economics_p007.bib",
+      "records": 1065,
+      "bytes": 345924,
+      "sha256": "a6e22ffe9832ab03db8b97ca424ebb5484f8bd0a03ac9ce7ad2cde75921b9e1f"
+    },
+    {
+      "path": "bibliography/T9_economics_p008.bib",
+      "records": 1220,
+      "bytes": 365994,
+      "sha256": "9956209008fd4ca8327ed8174c66327e7c01de96a5492db4dbed2005de2bcda1"
+    }
+  ],
+  "root_files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 14,
+      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    {
+      "path": "DATA_POLICY.md",
+      "bytes": 791,
+      "sha256": "e411251d117e07a5dd645cbc4cec4ca09b9a33d122756a8d86df5f0524a673de"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 244,
+      "sha256": "cef0998f3e99b97f942ccf51e0eaf111b46e1fe27803a705ad09de455cc1bbbf"
+    },
+    {
+      "path": "LICENSE-APACHE",
+      "bytes": 10385,
+      "sha256": "7adc24f332b9bd73875c2d3d2510831160a06fc14383d7c1df50aa5b51275ed3"
+    },
+    {
+      "path": "LICENSE-MIT",
+      "bytes": 1063,
+      "sha256": "5582007f9408ac6532e7f16d0405ee34f0ca2cb278114d6b676125e75ee83f1f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2320,
+      "sha256": "d4b84d89c472970aa57605ba2f98579864abe431453fec3cc2ebee0457a3f5ee"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 496,
+      "sha256": "afebd723aa2e8a86968e6237da614d04bb83e84f6a58580c485817bfc925986d"
+    },
+    {
+      "path": "verify.py",
+      "bytes": 3637,
+      "sha256": "30f440b5fd1f730764454d26cdfd6161ac8f9064a22c4b7b6b66c1278aceb253"
+    }
+  ],
+  "key_policy": "Unique under Unicode casefold; later sorted-shard collisions gain _pub plus first eight SHA256 hex digits of the original UTF-8 key.",
+  "key_aliases": [
+    {
+      "path": "bibliography/T3_applied_p001.bib",
+      "original": "jain2026Bibby",
+      "exported": "jain2026Bibby_pubbbc99d8d"
+    },
+    {
+      "path": "bibliography/T7_emerging_p001.bib",
+      "original": "EBanks2026Geospatial",
+      "exported": "EBanks2026Geospatial_pube3573d41"
+    },
+    {
+      "path": "bibliography/T7_emerging_p030.bib",
+      "original": "Qu2023Multi",
+      "exported": "Qu2023Multi_pub0c53a7aa"
+    }
+  ]
+}
