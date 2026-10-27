@@ -1,5 +1,5 @@
 {
-  "edition": "0.1.1-search-preview",
+  "edition": "0.1.2-reader-preview",
   "as_of": "2026-10-21",
   "records": 134795,
   "bibtex_files": 115,
@@ -754,8 +754,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5815,
-      "sha256": "6b518ffc0acf09d3a255b28eab41cab94743e1353df8bde195ec273a5a80a90a"
+      "bytes": 7347,
+      "sha256": "f199324a9ffadd1d663aaadbae44010316598abea9a1f07fd04d5dfa9d5eca3d"
     },
     {
       "path": "SECURITY.md",

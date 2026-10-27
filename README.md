@@ -2,7 +2,7 @@
 
 A sharded BibTeX research bibliography spanning multiple fields, with an initial emphasis on cognitive frameworks, agent systems and AI governance.
 
-Version **0.1.1-search-preview** contains **134,795 citation records across 115 BibTeX files**, as of 2026-10-21. It adds an offline search tool to the unchanged citation snapshot from `v0.1.0-preview`. It makes no claim to be the largest bibliography.
+Version **0.1.2-reader-preview** contains **134,795 citation records across 115 BibTeX files**, as of 2026-10-21. The citation snapshot is byte-identical to `v0.1.0-preview`; this edition adds offline search and an editable reader kit. It makes no claim to be the largest bibliography.
 
 Use the files in bibliography/ with your citation manager or BibTeX tooling. MANIFEST.json records each shard count and SHA-256 hash.
 
@@ -34,7 +34,8 @@ entries. `--key` is an exact, case-sensitive citation-key filter. `--output`
 creates a new file outside the edition, refuses existing files and prints a
 save receipt; its parent directory must exist. Windows reserved device names
 and nonportable device/stream targets are refused. Without `--output`, BibTeX goes
-to standard output. Default JSON search creates no files or persistent index.
+to standard output, with parsing diagnostics on standard error. Default JSON
+search creates no files or persistent index.
 JSON is the safer format for examining untrusted metadata; raw BibTeX remains
 untrusted input. Check the selected work before citing it.
 
@@ -69,6 +70,34 @@ Run the small synthetic regression suite with:
 ```text
 python -B -m unittest discover -s . -p test_search.py -v
 ```
+
+## Apply evidence in your work
+
+The [reader kit source](reader-kit/README.md) builds a small offline HTML reader
+with editable notes and Markdown, JSON and BibTeX downloads. Start with its
+[worked guide](reader-kit/guide.md): state a question, distinguish a source
+finding from your interpretation, then choose an action and a way to test it.
+BKI and IN2 appear as HUMMBL design interpretations. Reader effectiveness and
+learning gains have not been evaluated.
+
+From the repository root, use Python 3.11 or newer and choose new output paths
+outside this edition:
+
+```text
+python -B reader-kit/build.py --output ../bibliography-reader-built
+python -B reader-kit/package.py --output ../bibliography-reader-release --archive ../bibliography-reader.zip
+```
+
+The kit uses four supplementary references as a worked example. They are
+separate from the 134,795-record snapshot and its 115-shard count. Its source
+cards retain context limits and an explicit erratum review hold. These summaries
+are authored appraisals, not independent validation of the works or this kit.
+
+Root `verify.py` checks the manifest-listed shards and root documents; it does
+not inventory `reader-kit/`. The signed Git revision covers those source files.
+The seven-input build identity and ten-file release inventory have separate,
+explicit scopes described in the kit documentation. Integrity hashes alone do
+not establish publisher authenticity, scientific truth or reader outcomes.
 
 ## Check the edition
 

@@ -1,0 +1,44 @@
+{
+  "assessments": [
+    {
+      "id": "S1",
+      "doi": "10.1073/pnas.2422633122",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.2422633122",
+      "claim": "In the studied high-school mathematics setting, unguarded AI assistance helped practice performance but harmed subsequent unaided performance; a guarded tutor mitigated that harm",
+      "claim_sha256": "608f068402debecab37f7708e2a966fca67d113f01f493a1167b6d96a8ccb899",
+      "finding_support": "SUPPORTED",
+      "inspected": "Publisher Significance, Abstract, Experimental Design and affiliation correction at 10.1073/pnas.2518204122",
+      "limitation": "Educational context; no direct evaluation of this reader guide. No effect-size transfer asserted."
+    },
+    {
+      "id": "S2",
+      "doi": "10.1038/s41598-025-97652-6",
+      "url": "https://www.nature.com/articles/s41598-025-97652-6",
+      "claim": "A specifically designed AI tutor produced stronger learning outcomes than the active-learning comparison in the studied college physics setting",
+      "claim_sha256": "10f0c44bf0cf37b6561fffd4d61877148c8d43f30f53506517bdde0e7237aff9",
+      "finding_support": "SUPPORTED",
+      "inspected": "PMC full text at https://pmc.ncbi.nlm.nih.gov/articles/PMC12179260/: Results, Methods and Context/limitations; observed 2026-10-21",
+      "limitation": "Two-lesson crossover study in one college physics course with immediate post-tests; delayed retention and transfer to this reader kit not established. Authors bound generalization to complex synthesis tasks."
+    },
+    {
+      "id": "S3",
+      "doi": "10.1126/science.ade4420",
+      "url": "https://doi.org/10.1126/science.ade4420",
+      "claim": "Reported belonging-intervention benefits depended on opportunities to belong in the studied college contexts",
+      "claim_sha256": "4995c512915e19b308612891de8ad1d8b1a45ace51b69d66efb678d2889d75e5",
+      "finding_support": "UNVERIFIED",
+      "inspected": "Author-hosted original PDF and PubMed original/erratum metadata",
+      "limitation": "Erratum existence verified, substantive erratum text not retrieved; current-result promotion held."
+    },
+    {
+      "id": "S4",
+      "doi": "10.3386/w35230",
+      "url": "https://www.nber.org/papers/w35230",
+      "claim": "Four experiments at two Canadian universities reported no detected grade or persistence benefit from the tested brief interventions",
+      "claim_sha256": "00f1e5184437001eae3f712a0a40d3a6f05e32a4d20e5655a94d57553b3f128b",
+      "finding_support": "QUALIFIED",
+      "inspected": "NBER indexed primary abstract and working-paper metadata; direct open returned 403",
+      "limitation": "Working paper; journal status not established; full text not appraised. Null result does not reject every belonging intervention."
+    }
+  ]
+}
