@@ -2,7 +2,7 @@
 
 A sharded BibTeX research bibliography spanning multiple fields, with an initial emphasis on cognitive frameworks, agent systems and AI governance.
 
-Version **0.1.2-reader-preview** contains **134,795 citation records across 115 BibTeX files**, as of 2026-10-21. The citation snapshot is byte-identical to `v0.1.0-preview`; this edition adds offline search and an editable reader kit. It makes no claim to be the largest bibliography.
+Version **0.1.3-citation-preview** contains **134,795 citation records across 115 BibTeX files**, as of 2026-10-21. This edition retains the offline search and editable reader kit and corrects one citation identity. Record and shard counts are unchanged. It makes no claim to be the largest bibliography.
 
 Use the files in bibliography/ with your citation manager or BibTeX tooling. MANIFEST.json records each shard count and SHA-256 hash.
 
@@ -108,6 +108,8 @@ The edition contains citation metadata and links to source works. Abstracts, fre
 Much of the corpus was collected automatically. Citation keys are unique under Unicode case folding in this snapshot, but different keys may refer to the same work. Three exported keys have deterministic disambiguating suffixes to avoid case-insensitive consumer collisions; MANIFEST.json records those aliases. Metadata completeness and relevance vary; this preview is not a claim that every record has received manual review. Treat BibTeX input as data and follow your citation tool's security guidance.
 
 Known harvested-data defects include author strings with trailing separators or inverted components, title extraction artifacts, and volume/page text embedded in journal fields. These may affect citation rendering. Corrections require checking the linked source; this edition preserves the exported metadata rather than guessing replacements.
+
+The `Goodfellow2015Adversarial` record now identifies the [2015 ICLR paper by Goodfellow, Shlens and Szegedy](https://arxiv.org/abs/1412.6572v3). Its former URL and accompanying metadata identified [a different 2023 paper](https://arxiv.org/abs/2306.07441v1). The DOI in the corrected record identifies the arXiv preprint; it is not asserted to be an ICLR conference DOI. This is one verified identity correction, not a full-corpus metadata appraisal.
 
 For corrections, identify the shard and citation key in an issue or pull request. Include a public source for any proposed metadata change. See SECURITY.md for private security or accidental-disclosure reports.
 
