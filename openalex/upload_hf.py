@@ -51,7 +51,12 @@ def main(argv=None) -> int:
     api = HfApi(token=token)
     api.create_repo(repo_id=args.repo_id, repo_type="dataset",
                     private=not args.public, exist_ok=True)
-    api.upload_large_folder(repo_id=args.repo_id, repo_type="dataset", folder_path=str(folder))
+    if hasattr(api, "upload_large_folder"):
+        api.upload_large_folder(repo_id=args.repo_id, repo_type="dataset", folder_path=str(folder))
+    else:
+        # Older and newer huggingface_hub releases differ; upload_folder works on both.
+        api.upload_folder(repo_id=args.repo_id, repo_type="dataset", folder_path=str(folder),
+                          commit_message="Upload OpenAlex BibTeX 1M proof of concept (private)")
     print(f"uploaded to {args.repo_id} ({visibility})")
     return 0
 
