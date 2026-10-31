@@ -19,7 +19,7 @@ outside GitHub, after review.
 The external verifier is `../verify.py`:
 
 ```
-python verify.py --manifest MANIFEST.openalex.json --root <folder with bibliography/ and sidecar>
+python verify.py --manifest MANIFEST.openalex.json --root <folder with bibliography/>
 python verify.py --manifest MANIFEST.json --root openalex/sample
 ```
 
@@ -60,6 +60,7 @@ Only the 19 allowlisted fields are emitted. Abstracts are never read into the ou
 | doi | `doi`, lowercased, without the `https://doi.org/` prefix |
 | url | `primary_location.landing_page_url`, else `https://doi.org/<doi>`, else the OpenAlex ID |
 | eprint / archiveprefix | DOIs under `10.48550/arXiv.` only (`arXiv`) |
+| openalex_id | the work ID, for example `W7121158239` |
 
 Entry type from OpenAlex `type`: `article` and `review` to `@article`; `book` to `@book`;
 `book-chapter` to `@incollection`; `proceedings-article` to `@inproceedings`; `dissertation` to
@@ -68,11 +69,11 @@ Entry type from OpenAlex `type`: `article` and `review` to `@article`; `book` to
 Rejected before mapping: `is_retracted`, `is_paratext`, missing OpenAlex ID, no title, and lines
 that are not valid JSON. Each reason is counted in the receipt.
 
-## Sidecar
+## Allowlist
 
-`OA_keymap.tsv.gz` maps each citation key to its OpenAlex work ID, DOI and shard. It exists
-because `openalex_id` is not on the allowlist. Adding it would change the metadata policy, which
-needs its own review. See the PR description.
+This edition has 20 allowed fields: the public edition's 19, plus `openalex_id`. The extra field
+carries the OpenAlex work ID so each entry traces to its source record. The public edition
+(`bibliography/`) keeps its own 19-field allowlist and is not changed by this.
 
 ## Keys and sharding
 
@@ -109,11 +110,11 @@ never deduplicated.
 | Dedup, duplicate DOI within slice | 7 |
 | Key collisions resolved by hash suffix | 244,714 (mostly one dataset series, titles starting `LHD`) |
 | Entries with a DOI | 77.7% |
-| Shards | 120 (domain-split, 4 MB cap) |
-| BibTeX bytes / sidecar bytes | 470,114,429 / 25,875,062 |
-| Bytes per entry (BibTeX) | about 472 |
+| Shards | 127 (domain-split, 4 MB cap) |
+| BibTeX bytes | 500,964,486 |
+| Bytes per entry (BibTeX) | about 503 |
 | Download | 4 files, about 1.1 GB, no retries |
-| Wall time (converter) | 182.8 s |
+| Wall time (converter) | 181.2 s |
 
 Overlap: 429 of the 995,952 entries (0.04%) share a DOI with the existing edition. This is a
 DOI-only overlap. Titles or authors may also match records without a DOI, and this run does not

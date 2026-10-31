@@ -5,8 +5,7 @@ Python 3.11+, standard library only. Streams each snapshot part file, so memory 
 by the largest single record plus one open shard per OpenAlex domain.
 
 Only the 19 metadata fields in MANIFEST.json's allowlist are emitted. Abstracts are never
-read into the output. OpenAlex work IDs are not an allowlisted field, so they go to a
-separate gzip sidecar (OA_keymap.tsv.gz) that maps each citation key to its source record.
+read into the output. The OpenAlex work ID is the 20th allowlisted field (openalex_id).
 See openalex/README.md for the slice definition, the field mapping and known gaps.
 """
 from __future__ import annotations
@@ -41,12 +40,12 @@ SOURCE_ATTRIBUTION = (
 ALLOWED_FIELDS = [
     "title", "author", "editor", "year", "month", "journal", "booktitle", "publisher",
     "volume", "number", "pages", "edition", "isbn", "issn", "doi", "url", "eprint",
-    "archiveprefix", "primaryclass",
+    "archiveprefix", "primaryclass", "openalex_id",
 ]
 # Emission order. Fields are dropped per entry type below when BibTeX does not define them.
 FIELD_ORDER = [
     "title", "author", "year", "month", "journal", "booktitle", "publisher", "volume",
-    "number", "pages", "issn", "doi", "url", "eprint", "archiveprefix",
+    "number", "pages", "issn", "doi", "url", "eprint", "archiveprefix", "openalex_id",
 ]
 ENTRY_TYPE = {
     "article": "article",
@@ -77,7 +76,7 @@ KEY_POLICY = (
     "Unique under Unicode casefold across this edition and the existing public edition. "
     "A base key of FirstAuthorFamily + year + first title word is used when free. On collision "
     "the key gains _oa plus the first eight hex digits of SHA256(OpenAlex work ID). Keys are "
-    "stable for a given snapshot and slice; the sidecar records the mapping."
+    "stable for a given snapshot and slice; openalex_id gives the source record."
 )
 _WS = re.compile(r"\s+")
 _DOI_PREFIX = re.compile(r"^(?:https?://(?:dx\.)?doi\.org/|doi:)", re.IGNORECASE)
@@ -205,6 +204,7 @@ def map_work(work: dict):
                               (f"https://doi.org/{doi}" if doi else None) or oid),
             "eprint": clean_text(eprint),
             "archiveprefix": archiveprefix,
+            "openalex_id": oid.rsplit("/", 1)[-1],
         },
     }
     return None, mapped
@@ -359,8 +359,6 @@ def main(argv=None) -> int:
     out = args.out
     bib_dir = out / "bibliography"
     shards = ShardSet(bib_dir)
-    sidecar = gzip.GzipFile(out / "OA_keymap.tsv.gz", "wb", mtime=0)
-    sidecar.write("citation_key\topenalex_id\tdoi\tshard\n".encode("utf-8"))
     used_keys = set(existing_keys)
     seen_slice_dois: set[str] = set()
     seen_oids: set[str] = set()
@@ -418,12 +416,10 @@ def main(argv=None) -> int:
                     if len(entry) > SHARD_CAP_BYTES:
                         rejects["entry_over_shard_cap"] += 1
                     else:
-                        shard_name = shards.write(mapped["domain"], entry)
+                        shards.write(mapped["domain"], entry)
                         domains[mapped["domain"]] += 1
                         types[mapped["bibtype"]] += 1
                         stats["written"] += 1
-                        sidecar.write(f"{key}\t{mapped['oid']}\t{doi or ''}\t"
-                                      f"bibliography/{shard_name}\n".encode("utf-8"))
                         if len(sample_texts) < args.sample_records:
                             sample_texts.append(entry)
             if remaining == 0:
@@ -435,9 +431,7 @@ def main(argv=None) -> int:
                           "read": consumed, "complete": complete})
         print(f"{part['url']} read={consumed} remaining={remaining}", file=sys.stderr, flush=True)
 
-    sidecar.close()
     rows = shards.close_all()
-    sidecar_path = out / "OA_keymap.tsv.gz"
     manifest = {
         "edition": EDITION,
         "as_of": started.date().isoformat(),
@@ -464,13 +458,11 @@ def main(argv=None) -> int:
         "bibtex_files": len(rows),
         "allowed_fields": ALLOWED_FIELDS,
         "excluded_content": ["abstracts", "free-form notes", "keywords and generated tags",
-                             "OpenAlex work IDs in the sidecar only", "topics and concepts",
+                             "topics and concepts",
                              "authors' affiliations and ORCIDs", "funders and awards"],
         "third_party_work_license": "unchanged; no blanket relicensing",
         "key_policy": KEY_POLICY,
         "files": rows,
-        "sidecars": [{"path": "OA_keymap.tsv.gz", "bytes": sidecar_path.stat().st_size,
-                      "sha256": sha256_file(sidecar_path)}],
     }
     (out / "MANIFEST.openalex.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -536,9 +528,7 @@ def main(argv=None) -> int:
         "network": {"download_retries": stats["download_retries"]},
         "output": {
             "bytes_bibtex_total": sum(r["bytes"] for r in rows),
-            "bytes_sidecar": manifest["sidecars"][0]["bytes"],
             "manifest_sha256": sha256_file(out / "MANIFEST.openalex.json"),
-            "sidecar_sha256": manifest["sidecars"][0]["sha256"],
         },
     }
     args.receipt.parent.mkdir(parents=True, exist_ok=True)

@@ -1,10 +1,10 @@
 {
   "receipt": "openalex-1m-poc",
   "edition": "0.1.0-openalex-1m-poc",
-  "started_utc": "2026-10-31T22:07:54+00:00",
-  "elapsed_seconds": 182.8,
+  "started_utc": "2026-10-31T22:37:23+00:00",
+  "elapsed_seconds": 181.2,
   "tool": {
-    "converter_sha256": "bea96ed36daf517c32968908cc18dcf827f448c2648495dbd06eff84834d9777",
+    "converter_sha256": "14b6a590a59d915cbdbbd5fa157d5e5718dfe6fb24583238690ad287ceeb60bb",
     "python": "3.14.4",
     "platform": "Windows-11-10.0.26300-SP0"
   },
@@ -79,15 +79,13 @@
       "social": 199496,
       "unclassified": 32177
     },
-    "bibtex_files": 120
+    "bibtex_files": 127
   },
   "network": {
     "download_retries": 0
   },
   "output": {
-    "bytes_bibtex_total": 470114429,
-    "bytes_sidecar": 25875062,
-    "manifest_sha256": "6e05aa79f915e7b3b176e6146467ddad3db1d85039ce2a7efef7def3d062a967",
-    "sidecar_sha256": "f42c54c1b772c65ae01b704d852c4d3da37d417884e04fc2d32c1f2e376b2dd1"
+    "bytes_bibtex_total": 500964486,
+    "manifest_sha256": "3bb7ba017f558561e5ae69b0815cdd2731eb40201c3788ca3787d56228250034"
   }
 }

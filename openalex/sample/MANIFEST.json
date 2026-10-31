@@ -36,25 +36,25 @@
     "url",
     "eprint",
     "archiveprefix",
-    "primaryclass"
+    "primaryclass",
+    "openalex_id"
   ],
   "excluded_content": [
     "abstracts",
     "free-form notes",
     "keywords and generated tags",
-    "OpenAlex work IDs in the sidecar only",
     "topics and concepts",
     "authors' affiliations and ORCIDs",
     "funders and awards"
   ],
   "third_party_work_license": "unchanged; no blanket relicensing",
-  "key_policy": "Unique under Unicode casefold across this edition and the existing public edition. A base key of FirstAuthorFamily + year + first title word is used when free. On collision the key gains _oa plus the first eight hex digits of SHA256(OpenAlex work ID). Keys are stable for a given snapshot and slice; the sidecar records the mapping.",
+  "key_policy": "Unique under Unicode casefold across this edition and the existing public edition. A base key of FirstAuthorFamily + year + first title word is used when free. On collision the key gains _oa plus the first eight hex digits of SHA256(OpenAlex work ID). Keys are stable for a given snapshot and slice; openalex_id gives the source record.",
   "files": [
     {
       "path": "bibliography/OA_sample_p001.bib",
       "records": 1000,
-      "bytes": 503641,
-      "sha256": "ce56c662df295b56a69fe314014ef6866ef44461d4c2db022983a486a2ecacd8"
+      "bytes": 534641,
+      "sha256": "65edb5146ed2c55ae8cd85f30c9305acbf451b27f74b6302acebd41282d9b7be"
     }
   ]
 }

@@ -7,7 +7,6 @@ Usage:
 Output layout (what upload_hf.py publishes):
   README.md                  dataset card (CC0-1.0, attribution, slice, mapping, gaps)
   MANIFEST.openalex.json     copied from the converter build
-  OA_keymap.tsv.gz           citation key -> OpenAlex work ID sidecar
   verify.py                  copied from the repository root (stdlib-only verifier)
   bibliography/OA_*.bib.gz   gzipped shards; gunzip them before running verify.py
   SHA256SUMS                 sha256 of every published file
@@ -79,9 +78,9 @@ first file `{sl['first_file']}`; last file `{sl['last_file']}`.
 
 ## What is included
 
-Only the 19 allowlisted BibTeX fields: {", ".join(manifest['allowed_fields'])}.
+Only the 20 allowlisted BibTeX fields: {", ".join(manifest['allowed_fields'])}.
 No abstracts, notes, keywords, topics, concepts, affiliations, ORCIDs, funders or awards.
-OpenAlex work IDs are in `OA_keymap.tsv.gz`, not in the entries.
+`openalex_id` holds the OpenAlex work ID, so each entry traces to its source record.
 
 ## Known gaps
 
@@ -89,7 +88,8 @@ OpenAlex work IDs are in `OA_keymap.tsv.gz`, not in the entries.
 - Author names are OpenAlex display names, not normalised BibTeX `Last, First`.
 - Records flagged retracted or paratext are excluded, and so are records with no title.
 - Citation keys use the first author's family name, year and first title word. Records
-  that collide with another key get a `_oa` suffix plus eight hex digits of SHA-256(OpenAlex ID).
+  that collide with another key get a `_oa` suffix plus the shortest SHA-256(OpenAlex ID) prefix
+  (at least eight hex digits) that makes the key unused.
 
 ## Verify
 
@@ -98,7 +98,7 @@ gunzip -k bibliography/*.bib.gz   # or decompress with any gzip tool
 python verify.py --manifest MANIFEST.openalex.json --root .
 ```
 
-The verifier checks SHA-256 and byte length of every shard and sidecar, the record counts,
+The verifier checks SHA-256 and byte length of every shard, the record counts,
 citation-key uniqueness under Unicode casefold, and the field allowlist.
 
 ## Excluded content and rights
