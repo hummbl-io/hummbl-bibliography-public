@@ -1,0 +1,60 @@
+{
+  "edition": "0.1.0-openalex-1m-poc-sample",
+  "as_of": "2026-10-31",
+  "source": {
+    "name": "OpenAlex",
+    "url": "https://openalex.org",
+    "snapshot_date": "2026-10-14",
+    "snapshot_format": "jsonl",
+    "snapshot_manifest_sha256": "2b3d611b3ec93912b7b655ee139310936048a689c0f3508052a73af03a6c453f",
+    "license": "CC0-1.0",
+    "attribution": "Bibliographic metadata derived from OpenAlex (https://openalex.org), CC0 1.0 Universal Public Domain Dedication. Retain this line with derived data."
+  },
+  "slice": {
+    "definition": "first 1000000 records, in snapshot manifest order, of works/jsonl, starting at s3://openalex/data/jsonl/works/updated_date=2026-10-14/part_0156.gz; files are listed by the snapshot manifest in updated_date order",
+    "records_requested": 1000,
+    "note": "first kept records of the 1M slice, for review only"
+  },
+  "records": 1000,
+  "bibtex_files": 1,
+  "allowed_fields": [
+    "title",
+    "author",
+    "editor",
+    "year",
+    "month",
+    "journal",
+    "booktitle",
+    "publisher",
+    "volume",
+    "number",
+    "pages",
+    "edition",
+    "isbn",
+    "issn",
+    "doi",
+    "url",
+    "eprint",
+    "archiveprefix",
+    "primaryclass"
+  ],
+  "excluded_content": [
+    "abstracts",
+    "free-form notes",
+    "keywords and generated tags",
+    "OpenAlex work IDs in the sidecar only",
+    "topics and concepts",
+    "authors' affiliations and ORCIDs",
+    "funders and awards"
+  ],
+  "third_party_work_license": "unchanged; no blanket relicensing",
+  "key_policy": "Unique under Unicode casefold across this edition and the existing public edition. A base key of FirstAuthorFamily + year + first title word is used when free. On collision the key gains _oa plus the first eight hex digits of SHA256(OpenAlex work ID). Keys are stable for a given snapshot and slice; the sidecar records the mapping.",
+  "files": [
+    {
+      "path": "bibliography/OA_sample_p001.bib",
+      "records": 1000,
+      "bytes": 503641,
+      "sha256": "ce56c662df295b56a69fe314014ef6866ef44461d4c2db022983a486a2ecacd8"
+    }
+  ]
+}

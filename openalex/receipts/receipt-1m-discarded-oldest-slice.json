@@ -1,0 +1,391 @@
+{
+  "receipt": "openalex-1m-poc",
+  "edition": "0.1.0-openalex-1m-poc",
+  "started_utc": "2026-10-31T21:53:42+00:00",
+  "elapsed_seconds": 131.3,
+  "tool": {
+    "converter_sha256": "54c9fc843dfdffa4105f55ba887435078cf95ac23ab8cbbb5ee807ca5b893297",
+    "python": "3.14.4",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "input": {
+    "snapshot_date": "2026-10-14",
+    "snapshot_manifest_sha256": "2b3d611b3ec93912b7b655ee139310936048a689c0f3508052a73af03a6c453f",
+    "slice": {
+      "definition": "first N records, in snapshot manifest order, of works/jsonl; files are listed by the snapshot manifest, updated_date ascending",
+      "records_requested": 1000000,
+      "records_read": 1000000,
+      "first_file": "s3://openalex/data/jsonl/works/updated_date=2016-06-24/part_0000.gz",
+      "last_file": "s3://openalex/data/jsonl/works/updated_date=2025-10-10/part_0002.gz",
+      "files_touched": 54
+    },
+    "files": [
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2016-06-24/part_0000.gz",
+        "manifest_records": 489,
+        "read": 489,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2016-07-22/part_0000.gz",
+        "manifest_records": 7,
+        "read": 7,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2016-08-23/part_0000.gz",
+        "manifest_records": 7,
+        "read": 7,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2016-09-16/part_0000.gz",
+        "manifest_records": 3,
+        "read": 3,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2016-09-30/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2016-10-07/part_0000.gz",
+        "manifest_records": 5,
+        "read": 5,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2016-11-04/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2016-12-08/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-01-06/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-02-10/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-02-24/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-04-07/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-04-28/part_0000.gz",
+        "manifest_records": 4,
+        "read": 4,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-06-09/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-06-30/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-08-08/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-08-17/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2017-11-10/part_0000.gz",
+        "manifest_records": 2,
+        "read": 2,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2018-01-05/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2018-05-07/part_0000.gz",
+        "manifest_records": 3,
+        "read": 3,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2018-05-17/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2018-08-22/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2018-09-27/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2019-03-02/part_0000.gz",
+        "manifest_records": 2,
+        "read": 2,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2019-10-10/part_0000.gz",
+        "manifest_records": 2,
+        "read": 2,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2019-11-22/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2019-12-13/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2020-02-07/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2020-03-27/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2020-04-03/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2020-05-01/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2020-11-09/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2021-07-19/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2021-08-02/part_0000.gz",
+        "manifest_records": 11,
+        "read": 11,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2021-08-16/part_0000.gz",
+        "manifest_records": 2,
+        "read": 2,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2021-10-11/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2021-11-04/part_0000.gz",
+        "manifest_records": 42,
+        "read": 42,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2021-12-23/part_0000.gz",
+        "manifest_records": 2,
+        "read": 2,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2022-03-09/part_0000.gz",
+        "manifest_records": 6,
+        "read": 6,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-22/part_0000.gz",
+        "manifest_records": 148,
+        "read": 148,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-23/part_0000.gz",
+        "manifest_records": 115,
+        "read": 115,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-24/part_0000.gz",
+        "manifest_records": 204,
+        "read": 204,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-25/part_0000.gz",
+        "manifest_records": 116,
+        "read": 116,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-26/part_0000.gz",
+        "manifest_records": 88,
+        "read": 88,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-27/part_0000.gz",
+        "manifest_records": 94,
+        "read": 94,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-28/part_0000.gz",
+        "manifest_records": 137,
+        "read": 137,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-29/part_0000.gz",
+        "manifest_records": 131,
+        "read": 131,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-30/part_0000.gz",
+        "manifest_records": 49,
+        "read": 49,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-07-31/part_0000.gz",
+        "manifest_records": 64,
+        "read": 64,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-09-08/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-10-08/part_0000.gz",
+        "manifest_records": 1,
+        "read": 1,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-10-10/part_0000.gz",
+        "manifest_records": 367203,
+        "read": 367203,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-10-10/part_0001.gz",
+        "manifest_records": 367574,
+        "read": 367574,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2025-10-10/part_0002.gz",
+        "manifest_records": 367099,
+        "read": 263464,
+        "complete": false
+      }
+    ],
+    "existing_edition": {
+      "records": 134795,
+      "distinct_dois": 134240
+    }
+  },
+  "counts": {
+    "lines_read": 1000000,
+    "rejected_by_reason": {
+      "paratext": 48,
+      "retracted": 3
+    },
+    "rejected_total": 51,
+    "deduped_existing_doi": 0,
+    "deduped_in_slice_doi": 0,
+    "existing_dois_hit": 0,
+    "key_collisions_resolved": 61621,
+    "written": 999949,
+    "written_by_entry_type": {
+      "article": 946253,
+      "book": 32733,
+      "incollection": 6314,
+      "misc": 3184,
+      "phdthesis": 11361,
+      "techreport": 104
+    },
+    "written_by_domain": {
+      "health": 103253,
+      "life": 79857,
+      "physical": 297347,
+      "social": 515684,
+      "unclassified": 3808
+    },
+    "bibtex_files": 93
+  },
+  "network": {
+    "download_retries": 0
+  },
+  "output": {
+    "bytes_bibtex_total": 364128368,
+    "bytes_sidecar": 15494911,
+    "manifest_sha256": "aa1a67dba6e3ddc5e188b205f6636721facc7d33a1cc8bb24be0eccfde9e4508",
+    "sidecar_sha256": "d2ac5c3d33b3ef1555a2c1f48256ffb07af626cbb422f128dddccc86e1a43c36"
+  }
+}
