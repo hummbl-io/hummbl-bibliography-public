@@ -29,3 +29,6 @@ jobs:
 
       - name: Run offline citation search unit tests
         run: python -m unittest test_search.py -v
+
+      - name: Run OpenAlex converter and verifier unit tests
+        run: python -m unittest openalex/tests/test_convert_openalex.py -v

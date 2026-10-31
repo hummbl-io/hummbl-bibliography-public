@@ -774,8 +774,8 @@
     },
     {
       "path": "verify.py",
-      "bytes": 3668,
-      "sha256": "badfabf4357e99eea25122c816a6c5ed99072d860b20cad5d56ecf7af0a65520"
+      "bytes": 5171,
+      "sha256": "b9d3c6f0d0039aa1b2180a9f49f0c86069116d8aadefa9e371929eb0ea6aaa9d"
     }
   ],
   "key_policy": "Unique under Unicode casefold; later sorted-shard collisions gain _pub plus first eight SHA256 hex digits of the original UTF-8 key.",

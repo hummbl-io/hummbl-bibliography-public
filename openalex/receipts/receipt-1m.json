@@ -1,0 +1,91 @@
+{
+  "receipt": "openalex-1m-poc",
+  "edition": "0.1.0-openalex-1m-poc",
+  "started_utc": "2026-10-31T22:37:23+00:00",
+  "elapsed_seconds": 181.2,
+  "tool": {
+    "converter_sha256": "14b6a590a59d915cbdbbd5fa157d5e5718dfe6fb24583238690ad287ceeb60bb",
+    "python": "3.14.4",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "input": {
+    "snapshot_date": "2026-10-14",
+    "snapshot_manifest_sha256": "2b3d611b3ec93912b7b655ee139310936048a689c0f3508052a73af03a6c453f",
+    "slice": {
+      "definition": "first 1000000 records, in snapshot manifest order, of works/jsonl, starting at s3://openalex/data/jsonl/works/updated_date=2026-10-14/part_0156.gz; files are listed by the snapshot manifest in updated_date order",
+      "records_requested": 1000000,
+      "records_read": 1000000,
+      "first_file": "s3://openalex/data/jsonl/works/updated_date=2026-10-14/part_0156.gz",
+      "last_file": "s3://openalex/data/jsonl/works/updated_date=2026-10-14/part_0159.gz",
+      "files_touched": 4
+    },
+    "files": [
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2026-10-14/part_0156.gz",
+        "manifest_records": 315396,
+        "read": 315396,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2026-10-14/part_0157.gz",
+        "manifest_records": 316757,
+        "read": 316757,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2026-10-14/part_0158.gz",
+        "manifest_records": 316032,
+        "read": 316032,
+        "complete": true
+      },
+      {
+        "url": "s3://openalex/data/jsonl/works/updated_date=2026-10-14/part_0159.gz",
+        "manifest_records": 315805,
+        "read": 51815,
+        "complete": false
+      }
+    ],
+    "existing_edition": {
+      "records": 134795,
+      "distinct_dois": 134240
+    }
+  },
+  "counts": {
+    "lines_read": 1000000,
+    "rejected_by_reason": {
+      "no_title": 385,
+      "paratext": 2798,
+      "retracted": 429
+    },
+    "rejected_total": 3612,
+    "deduped_existing_doi": 429,
+    "deduped_in_slice_doi": 7,
+    "deduped_in_slice_openalex_id": 0,
+    "existing_dois_hit": 429,
+    "key_collisions_resolved": 244714,
+    "written": 995952,
+    "written_by_entry_type": {
+      "article": 545351,
+      "book": 9872,
+      "incollection": 39176,
+      "misc": 376132,
+      "phdthesis": 17438,
+      "techreport": 7983
+    },
+    "written_by_domain": {
+      "health": 163526,
+      "life": 130195,
+      "physical": 470558,
+      "social": 199496,
+      "unclassified": 32177
+    },
+    "bibtex_files": 127
+  },
+  "network": {
+    "download_retries": 0
+  },
+  "output": {
+    "bytes_bibtex_total": 500964486,
+    "manifest_sha256": "3bb7ba017f558561e5ae69b0815cdd2731eb40201c3788ca3787d56228250034"
+  }
+}
