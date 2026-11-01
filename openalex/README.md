@@ -120,6 +120,17 @@ Overlap: 429 of the 995,952 entries (0.04%) share a DOI with the existing editio
 DOI-only overlap. Titles or authors may also match records without a DOI, and this run does not
 check those.
 
+## Guards
+
+- **Preflight.** Before any output is written, the converter samples the start file's first
+  `--preflight-records` (default 300) records and aborts if DOI coverage is below `--min-doi-rate`
+  (default 0.5). Lower it only with a recorded reason.
+- **Per-file coverage.** Each file's DOI count and rate are in the receipt (`input.files`).
+- **Existing-edition check.** The existing edition must have `--expected-existing` records (default
+  134,795). This guards against pointing at the wrong directory.
+- **Fixtures.** `--source-dir` and `--snapshot-manifest` run the converter on local files. The unit
+  tests use them, so the duplicate-ID, key-collision, retraction and preflight paths run offline.
+
 ## Run
 
 ```

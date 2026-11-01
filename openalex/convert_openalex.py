@@ -300,8 +300,35 @@ def fetch_json(url: str) -> tuple[dict, str]:
     return json.loads(raw), hashlib.sha256(raw).hexdigest()
 
 
+def resolve_url(snapshot_url: str, source_dir: Path | None) -> str:
+    """HTTP URL for a snapshot part file, or file:// for a local fixture directory."""
+    if source_dir is not None:
+        return "file://" + (source_dir / snapshot_url.rsplit("/", 1)[-1]).as_posix()
+    return HTTP_PREFIX + snapshot_url[len(S3_PREFIX):]
+
+
+def doi_coverage(url: str, sample_records: int, stats: Counter) -> tuple[int, int]:
+    """Count DOI-bearing records among the first sample_records lines of one part file."""
+    seen = with_doi = 0
+    for line in iter_lines(url, stats):
+        seen += 1
+        try:
+            work = json.loads(line)
+        except ValueError:
+            work = {}
+        if work.get("doi"):
+            with_doi += 1
+        if seen >= sample_records:
+            break
+    return with_doi, seen
+
+
 def iter_lines(url: str, stats: Counter):
     """Yield gzip lines of one part file. A dropped connection resumes by skipping lines."""
+    if url.startswith("file://"):
+        with gzip.open(Path(url[len("file://"):]), "rb") as local:
+            yield from local
+        return
     consumed = 0
     attempt = 0
     while True:
@@ -339,6 +366,16 @@ def main(argv=None) -> int:
     parser.add_argument("--receipt", required=True, type=Path)
     parser.add_argument("--sample-dir", type=Path)
     parser.add_argument("--sample-records", type=int, default=SAMPLE_RECORDS)
+    parser.add_argument("--min-doi-rate", type=float, default=0.5,
+                        help="abort before writing if DOI coverage in the start file's first "
+                             "--preflight-records records is below this fraction")
+    parser.add_argument("--preflight-records", type=int, default=300)
+    parser.add_argument("--expected-existing", type=int, default=134795,
+                        help="record count the existing edition must have (guards the wrong directory)")
+    parser.add_argument("--snapshot-manifest", type=Path,
+                        help="local snapshot manifest JSON (for fixtures); default fetches from S3")
+    parser.add_argument("--source-dir", type=Path,
+                        help="local directory of part files named by basename (for fixtures)")
     args = parser.parse_args(argv)
 
     started = datetime.now(timezone.utc)
@@ -350,15 +387,17 @@ def main(argv=None) -> int:
     key_collisions = 0
     overlap_dois_hit: set[str] = set()
 
-    snapshot, snapshot_sha = fetch_json(SNAPSHOT_MANIFEST_URL)
+    if args.snapshot_manifest:
+        raw_manifest = args.snapshot_manifest.read_bytes()
+        snapshot, snapshot_sha = json.loads(raw_manifest), hashlib.sha256(raw_manifest).hexdigest()
+    else:
+        snapshot, snapshot_sha = fetch_json(SNAPSHOT_MANIFEST_URL)
     works = next(e for e in snapshot["entities"] if e["entity"] == "works")
     existing_keys, existing_dois, existing_records = load_existing(args.existing)
-    if existing_records != 134795:
-        raise SystemExit(f"existing edition has {existing_records} records, expected 134795")
+    if existing_records != args.expected_existing:
+        raise SystemExit(f"existing edition has {existing_records} records, "
+                         f"expected {args.expected_existing}")
 
-    out = args.out
-    bib_dir = out / "bibliography"
-    shards = ShardSet(bib_dir)
     used_keys = set(existing_keys)
     seen_slice_dois: set[str] = set()
     seen_oids: set[str] = set()
@@ -370,13 +409,28 @@ def main(argv=None) -> int:
     if args.start_file not in urls:
         raise SystemExit(f"--start-file is not a works part file in snapshot {snapshot['date']}")
     slice_files = works["files"][urls.index(args.start_file):]
+    start_url = resolve_url(slice_files[0]["url"], args.source_dir)
+    pre_with_doi, pre_seen = doi_coverage(start_url, args.preflight_records, stats)
+    pre_rate = pre_with_doi / pre_seen if pre_seen else 0.0
+    preflight = {"start_file": slice_files[0]["url"], "sample_records": pre_seen,
+                 "doi_present": pre_with_doi, "doi_rate": round(pre_rate, 4),
+                 "min_doi_rate": args.min_doi_rate}
+    if pre_rate < args.min_doi_rate:
+        raise SystemExit(f"preflight: DOI coverage {pre_rate:.1%} in the first {pre_seen} records of "
+                         f"{slice_files[0]['url']} is below {args.min_doi_rate:.0%}. Choose another "
+                         "--start-file, or lower --min-doi-rate and record the reason.")
+
+    out = args.out
+    bib_dir = out / "bibliography"
+    shards = ShardSet(bib_dir)
 
     for part in slice_files:
         if remaining == 0:
             break
-        url = HTTP_PREFIX + part["url"][len(S3_PREFIX):]
+        url = resolve_url(part["url"], args.source_dir)
         expected = part["meta"]["record_count"]
         consumed = 0
+        doi_in_file = 0
         for line in iter_lines(url, stats):
             consumed += 1
             read_total += 1
@@ -389,6 +443,8 @@ def main(argv=None) -> int:
                 if remaining == 0:
                     break
                 continue
+            if work.get("doi"):
+                doi_in_file += 1
             reason, mapped = map_work(work)
             if reason or mapped is None:
                 rejects[reason or "unmapped"] += 1
@@ -428,7 +484,9 @@ def main(argv=None) -> int:
         if not complete and remaining > 0:
             raise RuntimeError(f"line count {consumed} != manifest {expected} for {url}")
         file_rows.append({"url": part["url"], "manifest_records": expected,
-                          "read": consumed, "complete": complete})
+                          "read": consumed, "complete": complete,
+                          "doi_present": doi_in_file,
+                          "doi_rate": round(doi_in_file / consumed, 4) if consumed else 0.0})
         print(f"{part['url']} read={consumed} remaining={remaining}", file=sys.stderr, flush=True)
 
     rows = shards.close_all()
@@ -504,6 +562,7 @@ def main(argv=None) -> int:
             "platform": platform.platform(),
         },
         "input": {
+            "preflight": preflight,
             "snapshot_date": snapshot["date"],
             "snapshot_manifest_sha256": snapshot_sha,
             "slice": manifest["slice"],
